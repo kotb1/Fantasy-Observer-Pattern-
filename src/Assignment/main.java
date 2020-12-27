@@ -30,13 +30,13 @@ public class main
 	public static void main (String[] args) throws IOException {
 		
 		//users=new user[5];
-		br1 = new BufferedReader(new FileReader("C:\\Users\\bodyy\\OneDrive\\Desktop\\usernames.txt"));
+		br1 = new BufferedReader(new FileReader("usernames.txt"));
 		 String[] line1=new String[8];
 		 while ((line1[i] = br1.readLine()) != null) 
 		 {
 			 i++;
 		 }
-		 br2 = new BufferedReader(new FileReader("C:\\Users\\bodyy\\OneDrive\\Desktop\\pass.txt"));
+		 br2 = new BufferedReader(new FileReader("pass.txt"));
 		 String[] line2=new String[8];
 		 while ((line2[j] = br2.readLine()) != null) 
 		 {
@@ -146,7 +146,7 @@ public class main
 								String player4=in.nextLine();
 								s.add(player4);
 							}
-							if(s.totalprice<100.0 && s.noofplayers==15) 
+							if(s.totalprice<100.0 && s.noofplayers==14) 
 							{
 								q=false;
 								System.out.println("Your Squad has been built");

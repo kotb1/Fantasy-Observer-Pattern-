@@ -42,8 +42,8 @@ public class Register_Login2
 	public void Register(String user_name, String user_password) throws IOException
 	{
 		users.add(new  user(user_name,user_password));
-		String path1 = "C:\\Users\\bodyy\\OneDrive\\Desktop\\usernames.txt";
-		String path2 = "C:\\Users\\bodyy\\OneDrive\\Desktop\\pass.txt";
+		String path1 = "usernames.txt";
+		String path2 = "pass.txt";
 		OutputStream os1 = new FileOutputStream(new File(path1), true);
 		OutputStream os2 = new FileOutputStream(new File(path2), true);
 		os1.write("\n".getBytes(), 0, "\n".length());

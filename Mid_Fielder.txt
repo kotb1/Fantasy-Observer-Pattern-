@@ -1,0 +1,6 @@
+Hoss  MidFielder  Wadi-Degla  Egyption  3.0
+Mohammed salah  MidFielder  Liverpool  Egyption  12.5 
+Heung-Min Son  MidFielder  Spurs  Korean  9.7 
+Sadio Mane  MidFielder  Liverpool  Sengalian  11.8 
+Bruno Fernandes  MidFielder  Man-United  Portugal  11.0 
+James Maddison  MidFielder  Leicster  Egyption  10.0

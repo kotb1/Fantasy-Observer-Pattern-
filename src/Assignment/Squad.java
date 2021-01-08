@@ -1,7 +1,14 @@
 package Assignment;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Squad 
 {
+	
+	public int totalscore=0;
+	private static BufferedReader br8;
 	public player players2[]=new player[15];
 	public float totalprice=0;
 	public int noofplayers=0;
@@ -9,6 +16,21 @@ public class Squad
 	public int noofdefenders=1;
 	public int noofstrikers=1;
 	public int noofmidfielders=1;
+	public void saved_Squad(String File_name) throws IOException 
+	{
+	//	Squad p = new Squad();
+		int i=0;
+		String[] line3=new String[50];
+		br8 = new BufferedReader(new FileReader(File_name));
+		while ((line3[i] = br8.readLine()) != null) 
+		 {
+			 String [] k = new String[5];
+			 k=line3[i].split("  ");
+			players2[i]=(new player(k[0],k[1],k[2],k[3],k[4],k[5])); 
+			 i++;
+		 }
+		
+	}
 	public player Search(String Name)
 	{
 		player p=null;
@@ -28,6 +50,11 @@ public class Squad
 	public void add(String Name) 
 	{
 		player p = Search(Name);
+		if(p==null) 
+		{
+			return;
+		}
+		else {
 		if(p.position.equals("GoalKeeper")) 
 		{
 			if(noofgoalkeepers<3) 
@@ -76,6 +103,7 @@ public class Squad
 			else
 				System.out.println("You Exceeded the number of Defenders");
 		}
+		}
 	}
 	public void clear()
 	{
@@ -90,19 +118,16 @@ public class Squad
 		noofstrikers=1;
 		noofmidfielders=1;
 	}
-	public void add_defender(String Name)
+	public player search_squad(String playername) 
 	{
-		
-		
-	}
-	public void add_striker(String Name)
-	{
-		
-		
-	}
-	public void add_midfielder(String Name)
-	{
-		
-		
+		player x= null;
+		for(int i = 0;i<15;i++)
+		{
+			if(players2[i].name.contains(playername)) 
+			{
+				x= players2[i];
+			}
+		}
+		return x;
 	}
 }

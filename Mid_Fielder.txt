@@ -1,4 +1,4 @@
-Hoss  MidFielder  Wadi-Degla  Egyption  3.0
+Hoss  MidFielder  Wadi-Degla  Egyption  0.5
 Mohammed salah  MidFielder  Liverpool  Egyption  12.5 
 Heung-Min Son  MidFielder  Spurs  Korean  9.7 
 Sadio Mane  MidFielder  Liverpool  Sengalian  11.8 

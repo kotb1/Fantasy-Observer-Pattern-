@@ -1,6 +1,7 @@
 Omar Magdy  Defender  FC Masr  Egyption  5.0
 Jan Bendarek  Defender  Southampton  Poland  4.7
-Andrew Robertson  Defender  Liverpool  Scotland  7.2
+Andrew Robertson  Defender  Liverpool  Scotland  4.2
 Virgil Van-Dijk  Defender  Liverpool  Netherlands  10.0
 John Stones  Defender  Man-City  England  4.8
-Eric Bailly  Defender  Man-United  England  6.7 
+Eric Bailly  Defender  Man-United  England  6.7
+u  Defender  ss  ff  1.0 

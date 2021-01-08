@@ -24,5 +24,4 @@ public class midfielder extends player
 		br.close();
 		f1.close();
 	}
-	
 }

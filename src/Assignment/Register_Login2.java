@@ -18,7 +18,7 @@ public class Register_Login2
 	{
 		 users=u;
 	}
-	public void login(String user_name,String password) throws IOException 
+	public boolean login(String user_name,String password) throws IOException 
 	{
 		
 		for(int i=0;i<users.size();i++) 
@@ -35,9 +35,14 @@ public class Register_Login2
 		if(password.equals(users.get(k).password)&& l==true) 
 		{
 			System.out.println("Login Successfully");
+			return true;
 		}
-		else
+		else 
+		{
 			System.out.println("Password and Username doesnot match");
+			return false;
+		}	
+		
 	}
 	public void Register(String user_name, String user_password) throws IOException
 	{

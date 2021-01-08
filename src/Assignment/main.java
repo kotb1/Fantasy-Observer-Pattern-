@@ -22,9 +22,12 @@ public class main
 	private static BufferedReader br4;
 	private static BufferedReader br5;
 	private static BufferedReader br6;
+	private static BufferedReader br7;
+	private static BufferedReader br8;
 	public static int i=0;
 	public static int j=0;
 	public static ArrayList  <user> users =new ArrayList ();
+	public static ArrayList  <Squad> squads =new ArrayList ();
 	public static ArrayList  <player> Players =new ArrayList ();
 	public static Register_Login2 p;
 	public static void main (String[] args) throws IOException {
@@ -47,6 +50,8 @@ public class main
 		br4 = new BufferedReader(new FileReader("Goal_Keeper.txt"));
 		br5 = new BufferedReader(new FileReader("Mid_Fielder.txt"));
 		br6 = new BufferedReader(new FileReader("Defender.txt"));
+		br7 = new BufferedReader(new FileReader("Squad1.txt"));
+		br8 = new BufferedReader(new FileReader("Squad1.txt"));
 		 String[] line3=new String[50];
 		 while ((line3[i] = br3.readLine()) != null) 
 		 {
@@ -94,15 +99,15 @@ public class main
 				u=in.nextLine();
 				System.out.println("Please enter Password");
 				pa=in.nextLine();
-				p.login(u, pa);
 				boolean t=true;
-				while(t==true)
+				//p.login(u, pa);
+				while(t==true&& p.login(u, pa))
 				{
 					player p1;
 					System.out.println("Do u want to add a NEW Player OR Add a Squad OR Retrive a Player Info by name");
 					String choice2= in.nextLine();
 					if(choice2.equals("Player")) 
-					{
+					{ 
 						System.out.print("Please Enter the Name: ");
 						String p2=in.nextLine();
 						System.out.print("Please Enter the Position: ");
@@ -113,26 +118,39 @@ public class main
 						String nationality1=in.nextLine();
 						System.out.print("Please Enter the Price: ");
 						String price1=in.nextLine();
-						if(p3.equals("Defender")) 
+						boolean u9=false;
+						for(int i =0;i<Players.size();i++) 
 						{
-							p1=new defender(p2,p3,club1,nationality1,price1);
-							p1.Add_player();
+							if(Players.get(i).name.equals(p2)) 
+							{
+								u9=true;
+							}
 						}
-						else if(p3.equals("Striker")) 
+						if(u9==false) 
 						{
-							p1=new striker(p2,p3,club1,nationality1,price1);
-							p1.Add_player();
+							if(p3.equals("Defender")) 
+							{
+								p1=new defender(p2,p3,club1,nationality1,price1);
+								p1.Add_player();
+							}
+							else if(p3.equals("Striker")) 
+							{
+								p1=new striker(p2,p3,club1,nationality1,price1);
+								p1.Add_player();
+							}
+							else if(p3.equals("MidFielder")) 
+							{
+								p1=new midfielder(p2,p3,club1,nationality1,price1);
+								p1.Add_player();
+							}
+							else if(p3.equals("GoalKeeper")) 
+							{
+								p1=new goalkeeper(p2,p3,club1,nationality1,price1);
+								p1.Add_player();
+							}
 						}
-						else if(p3.equals("MidFielder")) 
-						{
-							p1=new midfielder(p2,p3,club1,nationality1,price1);
-							p1.Add_player();
-						}
-						else if(p3.equals("GoalKeeper")) 
-						{
-							p1=new goalkeeper(p2,p3,club1,nationality1,price1);
-							p1.Add_player();
-						}
+						else
+							System.out.println("Player is already in the list");
 					}
 					else if(choice2.equals("Squad")) 
 					{
@@ -140,27 +158,26 @@ public class main
 						boolean q=true;
 						while(q==true)
 						{
-							while(s.totalprice<100.0 && s.noofplayers<15) 
+							while(s.totalprice<100.0 && s.noofplayers<15)
 							{
 								System.out.println("Please Enter the name of the Player u want to add");
 								String player4=in.nextLine();
 								s.add(player4);
 							}
-							if(s.totalprice<100.0 && s.noofplayers==14) 
+							if(s.totalprice<100.0 && s.noofplayers==15) 
 							{
 								q=false;
 								System.out.println("Your Squad has been built");
+								
 							}
 							else 
 							{
 								System.out.println("Build your squad again u have exceeded the limits");
+								q=false;
 								s.clear();
 							}	
 						}
-						for(int i =0;i<s.players2.length;i++) 
-						{
-							System.out.println(s.players2[i].name+"  "+s.players2[i].position);
-						}
+						
 					}
 					else if(choice2.equals("Log-out")) 
 					{
@@ -170,8 +187,6 @@ public class main
 					{
 						System.out.println("Please enter the name of the Player");
 						String key = in.nextLine();
-						//player t1 = new player("","","","","");
-						//t1.retrive(key);
 						for(int i =0;i<Players.size();i++) 
 						{
 							if(Players.get(i).name.contains(key)) 
@@ -179,6 +194,99 @@ public class main
 								System.out.println(Players.get(i).name+"  "+Players.get(i).position+"  "+Players.get(i).club+"  "+Players.get(i).nationality+"  "+Players.get(i).price);
 							}
 						}
+					}
+					else if(choice2.equals("k")) 
+					{
+						//observer k = new observer ();
+				    	//k.Action(0);
+						//Squad o = new Squad();
+						//ArrayList  <player> sPlayers =new ArrayList ();
+						/*String[] line31=new String[150];
+						for(int u1=0;u1<31;u1+=15) 
+						{
+							Squad o = new Squad();
+							int b=0;
+							while ((line31[b+u1] = br7.readLine())!=null && b<15) 
+							 {
+								// line31[b+u1] = br7.readLine();
+								 String [] k = new String[6];
+								 k=line31[b+u1].split("  ");
+								 o.players2[b+u1]=(new player(k[0],k[1],k[2],k[3],k[4],k[5])); 
+								 b++;
+							 }
+							squads.add(o);
+						}*/
+						Squad o = new Squad();
+						o.saved_Squad("Squad1.txt");
+						System.out.println(o.players2[0].points);
+						squads.add(o);
+						Squad o1 = new Squad();
+						o1.saved_Squad("squad2.txt");
+						System.out.println(o1.players2[0].points);
+						squads.add(o1);
+						for(int i=0;i<squads.size();i++)
+						{
+							
+							if((squads.get(i).search_squad("salah"))!=null)
+							{
+								observer k= new observer();
+								k.Action(0,squads.get(i).search_squad("salah") );
+								System.out.println("zeby");
+							}
+							
+							
+						}
+						System.out.println(o.players2[8].points);
+						/*Events k =new Events();
+						for(int g=0;g<squads.size();g++) 
+						{
+							for(int a=0;a<15;a++) 
+							{
+								if(squads.get(g).players2[a].name.contains(k.Player_name)) 
+								{
+									observer l = new observer();
+									l.u.value=Integer.parseInt(squads.get(g).players2[a].points);
+								//	k.value=
+									
+									l.Action(0);
+									System.out.println(l.u.value);
+									squads.get(g).players2[a].points=Integer.toString(l.u.value);
+								}
+							}
+						}
+						System.out.println(o.players2[2].points);
+						System.out.println(o1.players2[2].points);*/
+						
+
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					
+							
+							
+							
+							
+							
+							
+							
+							/*while (b<15) 
+						 {
+							 line31[b] = br7.readLine();
+							 String [] k = new String[4];
+							 k=line31[b].split("  ");
+							 o.players2[b]=(new player(k[0],k[1],k[2],k[3],k[4],k[5])); 
+							 b++;
+						 }
+						squads.add(o);*/
+						
+					
 					}
 				}
 			}
@@ -199,3 +307,39 @@ public class main
 		}
 	}
 }
+//Mane  Son salah  Hoss Bruno  Kotb  Kane  Hima  
+//Leno  Becker  u  Stones  Bailly  Magdy  Bendarek  
+/*s.add("Manse");//0
+s.add("Son");//1
+s.add("salah");//2
+s.add("Hoss");//3
+s.add("Bruno");//4
+s.add("Kotb");//5
+s.add("Kane");//6
+s.add("Leno");//7
+s.add("Becker");//8
+s.add("Virgil");//9
+s.add("Stones");
+s.add("Bailly");//10
+s.add("Magdy");//11
+s.add("Bendarek");//12
+s.add("Kotb");//13
+//s.add("u");//14
+s.add("Mane");*/
+/*int b=0; 
+int c=15;
+while((line31[b] = br8.readLine()) != null)
+{
+	Squad o = new Squad();
+	for(int h=b;h<c;h++) 
+	{
+		line31[h] = br7.readLine();
+		 String [] k = new String[6];
+		 k=line31[h].split("  ");
+		 o.players2[h]=(new player(k[0],k[1],k[2],k[3],k[4],k[5]));
+	}
+	
+	b+=14;
+	c+=15;
+	squads.add(o);
+	}*/

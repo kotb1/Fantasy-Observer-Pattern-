@@ -2,7 +2,7 @@ package Assignment;
 
 public class Events 
 {
-	Squad o = new Squad();
+	//Squad o = new Squad();
 	
 	public void Event1(player l) //goal
 	{
@@ -26,16 +26,21 @@ public class Events
 			l.points=Integer.toString(q);
 		}
 	}
-	public void Event2(player l) 
+	public void Event2(player l)//For each penalty miss
 	{
-		
+		int q = Integer.parseInt(l.points);
+		q-=2;
+		l.points=Integer.toString(q);
 	}
-	public void Event3(player l) 
+	public void Event3(player l)//For every 3 shot saves by a goalkeeper
 	{
-		
+		if(l.position.equals("GoalKeeper")) 
+		{
+			int q = Integer.parseInt(l.points);
+			q+=3;
+			l.points=Integer.toString(q);
+		}
+		else
+			System.out.println("This player is not a GoalKeeper to save");
 	}
-	
-	/*interface EventAction {
-        void Action();
-    }*/
 }

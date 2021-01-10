@@ -14,8 +14,6 @@ import java.util.ArrayList;
 
 public class main 
 {
-	//public static int i=0;
-	//public static int j=0;
 	private static BufferedReader br1;
 	private static BufferedReader br2;
 	private static BufferedReader br3;
@@ -24,15 +22,16 @@ public class main
 	private static BufferedReader br6;
 	private static BufferedReader br7;
 	private static BufferedReader br8;
+	private static BufferedReader br61;
 	public static int i=0;
 	public static int j=0;
+	public static observer l;
 	public static ArrayList  <user> users =new ArrayList ();
 	public static ArrayList  <Squad> squads =new ArrayList ();
 	public static ArrayList  <player> Players =new ArrayList ();
 	public static Register_Login2 p;
 	public static void main (String[] args) throws IOException {
 		
-		//users=new user[5];
 		br1 = new BufferedReader(new FileReader("usernames.txt"));
 		 String[] line1=new String[8];
 		 while ((line1[i] = br1.readLine()) != null) 
@@ -83,6 +82,12 @@ public class main
 			 k=line6[i].split("  ");
 			 Players.add(new defender(k[0],k[1],k[2],k[3],k[4])); 
 			 i++;
+		 }
+		 for(int o=1;o<users.size();o++) 
+		 {
+			 Squad e = new Squad();
+			 e.saved_Squad("squad"+users.get(o).username+".txt");
+			 squads.add(e);
 		 }
 		p=new Register_Login2(users);
 		Scanner in = new Scanner(System.in);
@@ -168,7 +173,6 @@ public class main
 							{
 								q=false;
 								System.out.println("Your Squad has been built");
-								
 							}
 							else 
 							{
@@ -177,7 +181,14 @@ public class main
 								s.clear();
 							}	
 						}
-						
+						  FileWriter myWriter = new FileWriter("squad"+u+".txt");
+						  for(int i=0;i<15;i++) 
+						  {
+							  myWriter.write(s.players2[i].name+"  "+s.players2[i].position+"  "+s.players2[i].club+"  "+s.players2[i].nationality+"  "
+							  +s.players2[i].price+"  "+"0");
+							  myWriter.write("\n");
+						  }
+					      myWriter.close();
 					}
 					else if(choice2.equals("Log-out")) 
 					{
@@ -195,98 +206,34 @@ public class main
 							}
 						}
 					}
-					else if(choice2.equals("k")) 
+					else if(choice2.equals("Events")) 
 					{
-						//observer k = new observer ();
-				    	//k.Action(0);
-						//Squad o = new Squad();
-						//ArrayList  <player> sPlayers =new ArrayList ();
-						/*String[] line31=new String[150];
-						for(int u1=0;u1<31;u1+=15) 
-						{
-							Squad o = new Squad();
-							int b=0;
-							while ((line31[b+u1] = br7.readLine())!=null && b<15) 
-							 {
-								// line31[b+u1] = br7.readLine();
-								 String [] k = new String[6];
-								 k=line31[b+u1].split("  ");
-								 o.players2[b+u1]=(new player(k[0],k[1],k[2],k[3],k[4],k[5])); 
-								 b++;
-							 }
-							squads.add(o);
-						}*/
-						Squad o = new Squad();
-						o.saved_Squad("Squad1.txt");
-						System.out.println(o.players2[0].points);
-						squads.add(o);
-						Squad o1 = new Squad();
-						o1.saved_Squad("squad2.txt");
-						System.out.println(o1.players2[0].points);
-						squads.add(o1);
+						l = new observer();
+						l.print();
+						System.out.println("Please Enter the Number of Event");
+						String event=in.nextLine();
+						System.out.println("Please Enter the name of the Player");
+						String name=in.nextLine();
 						for(int i=0;i<squads.size();i++)
 						{
 							
-							if((squads.get(i).search_squad("salah"))!=null)
+							if((squads.get(i).search_squad(name))!=null)
 							{
 								observer k= new observer();
-								k.Action(0,squads.get(i).search_squad("salah") );
-								System.out.println("zeby");
+								k.Action(Integer.parseInt(event),squads.get(i).search_squad(name) );
 							}
-							
-							
 						}
-						System.out.println(o.players2[8].points);
-						/*Events k =new Events();
-						for(int g=0;g<squads.size();g++) 
+						for(int o=1;o<users.size();o++) 
 						{
-							for(int a=0;a<15;a++) 
+							FileWriter myWriter = new FileWriter("squad"+users.get(o).username+".txt");
+							for(int i=0;i<15;i++) 
 							{
-								if(squads.get(g).players2[a].name.contains(k.Player_name)) 
-								{
-									observer l = new observer();
-									l.u.value=Integer.parseInt(squads.get(g).players2[a].points);
-								//	k.value=
-									
-									l.Action(0);
-									System.out.println(l.u.value);
-									squads.get(g).players2[a].points=Integer.toString(l.u.value);
-								}
+								myWriter.write(squads.get(0).players2[i].name+"  "+squads.get(0).players2[i].position+"  "+squads.get(0).players2[i].club+"  "
+										+squads.get(0).players2[i].nationality+"  "+squads.get(0).players2[i].price+"  "+squads.get(0).players2[i].points);
+								myWriter.write("\n");
 							}
+					      myWriter.close();
 						}
-						System.out.println(o.players2[2].points);
-						System.out.println(o1.players2[2].points);*/
-						
-
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-					
-							
-							
-							
-							
-							
-							
-							
-							/*while (b<15) 
-						 {
-							 line31[b] = br7.readLine();
-							 String [] k = new String[4];
-							 k=line31[b].split("  ");
-							 o.players2[b]=(new player(k[0],k[1],k[2],k[3],k[4],k[5])); 
-							 b++;
-						 }
-						squads.add(o);*/
-						
-					
 					}
 				}
 			}
@@ -326,20 +273,3 @@ s.add("Bendarek");//12
 s.add("Kotb");//13
 //s.add("u");//14
 s.add("Mane");*/
-/*int b=0; 
-int c=15;
-while((line31[b] = br8.readLine()) != null)
-{
-	Squad o = new Squad();
-	for(int h=b;h<c;h++) 
-	{
-		line31[h] = br7.readLine();
-		 String [] k = new String[6];
-		 k=line31[h].split("  ");
-		 o.players2[h]=(new player(k[0],k[1],k[2],k[3],k[4],k[5]));
-	}
-	
-	b+=14;
-	c+=15;
-	squads.add(o);
-	}*/

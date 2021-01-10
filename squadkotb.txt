@@ -1,0 +1,15 @@
+Alisson Becker  GoalKeeper  Liverpool  Brazilian  5.9  10
+Bernd Leno  GoalKeeper  Arsenal  German  4.9  8
+Omar Magdy  Defender  FC Masr  Egyption  5.0  8
+Jan Bendarek  Defender  Southampton  Poland  4.7  0
+Andrew Robertson  Defender  Liverpool  Scotland  4.2  0
+Eric Bailly  Defender  Man-United  England  6.7  0
+u  Defender  ss  ff  1.0  0
+Hoss  MidFielder  Wadi-Degla  Egyption  0.5  0
+Mohammed salah  MidFielder  Liverpool  Egyption  12.5  10
+Heung-Min Son  MidFielder  Spurs  Korean  9.7  10
+James Maddison  MidFielder  Leicster  Egyption  10.0  0
+Bruno Fernandes  MidFielder  Man-United  Portugal  11.0  0
+Harry Kane  Striker  Spurs  Italian  11.0  0
+Himaa  Striker  Elmayetin  Egyption  1.2  0
+Kotb  Striker  Al-Ahly  Egyption  0.5  4

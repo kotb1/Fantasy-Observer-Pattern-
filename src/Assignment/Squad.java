@@ -9,6 +9,7 @@ public class Squad
 	
 	public int totalscore=0;
 	private static BufferedReader br8;
+	private static int u=0;
 	public player players2[]=new player[15];
 	public float totalprice=0;
 	public int noofplayers=0;
@@ -16,6 +17,8 @@ public class Squad
 	public int noofdefenders=1;
 	public int noofstrikers=1;
 	public int noofmidfielders=1;
+	public int gameweeks[]=new int [38];
+	public int gameweek=0;
 	public void saved_Squad(String File_name) throws IOException 
 	{
 	//	Squad p = new Squad();
@@ -129,5 +132,29 @@ public class Squad
 			}
 		}
 		return x;
+	}
+	public int calculate_my_gameweek() 
+	{
+		for(int i=0;i<15;i++) 
+		{
+			int q = Integer.parseInt(players2[i].points);
+			gameweek+=q;
+		}
+		return gameweek;
+	}
+	public void nextgameweek() 
+	{
+		if(u<38) 
+		{
+			gameweeks[u]=gameweek;
+			u++;
+		}
+		else
+			System.out.println("gameweeks limit exceeded");
+	}
+	public int get_gameweek(int index) 
+	{
+		index+=1;
+		return gameweeks[index];
 	}
 }
